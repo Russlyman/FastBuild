@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using CommandLine;
+using Microsoft.Extensions.Configuration;
 
 namespace FastBuild
 {
@@ -9,6 +10,9 @@ namespace FastBuild
     {
         static async Task Main(string[] args)
         {
+            var config = new ConfigurationBuilder()
+                .AddJsonFile(AppDomain.CurrentDomain.BaseDirectory +"appsettings.json", false, false)
+                .Build();
 
             if (Directory.Exists(Helper.Paths["temp"]))
             {
@@ -23,7 +27,7 @@ namespace FastBuild
                 UpdateServer,
                 UpdateData
             >
-                (args).WithParsedAsync<IOption>(o => o.Run());
+                (args).WithParsedAsync<IOption>(o => o.Run(config));
         }
     }
 }

@@ -2,13 +2,14 @@
 using System.IO;
 using System.Threading.Tasks;
 using CommandLine;
+using Microsoft.Extensions.Configuration;
 
 namespace FastBuild;
 
 [Verb("setup", HelpText = "Setup FastBuild")]
 public class Setup : IOption
 {
-    public async Task Run()
+    public async Task Run(IConfigurationRoot config)
     {
         if (Directory.Exists(Helper.Paths["server"]))
         {
@@ -19,7 +20,7 @@ public class Setup : IOption
             Directory.Delete(Helper.Paths["server"], true);
         }
 
-        await new UpdateData().Run();
-        await new UpdateServer().Run();
+        await new UpdateData().Run(config);
+        await new UpdateServer().Run(config);
     }
 }

@@ -1,13 +1,14 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 using CommandLine;
+using Microsoft.Extensions.Configuration;
 
 namespace FastBuild;
 
 [Verb("updatedata", HelpText = "Updates FiveM data.")]
 public class UpdateData : IOption
 {
-    public async Task Run()
+    public async Task Run(IConfigurationRoot config)
     {
         if (Directory.Exists(Helper.Paths["fxserverData"]))
         {
