@@ -20,10 +20,12 @@ internal static class Helper
     {
         { "temp", AppDomain.CurrentDomain.BaseDirectory + "temp" + Path.DirectorySeparatorChar },
         { "server", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar },
+        { "fxserverConfig", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "server.cfg" },
         { "fxserverData", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "server-data" + Path.DirectorySeparatorChar },
         { "dataArchive", AppDomain.CurrentDomain.BaseDirectory + "temp" + Path.DirectorySeparatorChar + "cfx-server-data-master.zip" },
         { "tempFxserverData", AppDomain.CurrentDomain.BaseDirectory + "temp" + Path.DirectorySeparatorChar + "cfx-server-data-master" + Path.DirectorySeparatorChar },
         { "fxserver", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "fxserver" + Path.DirectorySeparatorChar },
+        { "fxserverBinary", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "fxserver" + Path.DirectorySeparatorChar + "FXServer.exe" },
         { "artefactArchive", AppDomain.CurrentDomain.BaseDirectory + "temp" + Path.DirectorySeparatorChar + "server.7z" }
     };
 

@@ -24,6 +24,7 @@ namespace FastBuild
             await Parser.Default.ParseArguments
             <
                 Setup,
+                StartServer,
                 UpdateServer,
                 UpdateData
             >

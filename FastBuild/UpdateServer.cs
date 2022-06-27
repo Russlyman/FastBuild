@@ -20,8 +20,8 @@ public class UpdateServer : IOption
 
         var latestArtefactUrl = await Helper.GetLatestArtefactUrl();
 
-        await Helper.DownloadFile(latestArtefactUrl, Helper.Paths["artefectArchive"]);
-        Helper.ExtractFile(Helper.Paths["artefectArchive"], Helper.Paths["fxserver"]);
-        File.Delete(Helper.Paths["artefectArchive"]);
+        await Helper.DownloadFile(latestArtefactUrl, Helper.Paths["artefactArchive"]);
+        Helper.ExtractFile(Helper.Paths["artefactArchive"], Helper.Paths["fxserver"]);
+        File.Delete(Helper.Paths["artefactArchive"]);
     }
 }
