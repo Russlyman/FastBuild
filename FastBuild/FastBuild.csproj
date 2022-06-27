@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <StartupObject>FastBuild.Program</StartupObject>
+    <Copyright>Copyright (c) 2022 Ross Elliman</Copyright>
+    <Company>Ross Elliman (Russlyman)</Company>
+    <Version>0.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Russlyman.Rcon" Version="1.0.4" />
+    <PackageReference Include="SharpCompress" Version="0.32.1" />
+  </ItemGroup>
+
+</Project>

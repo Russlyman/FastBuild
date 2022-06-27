@@ -1,0 +1,28 @@
+﻿using System.IO;
+using System.Threading.Tasks;
+using CommandLine;
+
+namespace FastBuild;
+
+[Verb("updatedata", HelpText = "Updates FiveM data.")]
+public class UpdateData : IOption
+{
+    public async Task Run()
+    {
+        if (Directory.Exists(Helper.Paths["fxserverData"]))
+        {
+            Directory.Delete(Helper.Paths["fxserverData"], true);
+        }
+
+        if (!Directory.Exists(Helper.Paths["server"]))
+        {
+            Directory.CreateDirectory(Helper.Paths["server"]);
+        }
+
+        await Helper.DownloadFile("https://github.com/citizenfx/cfx-server-data/archive/refs/heads/master.zip", Helper.Paths["dataArchive"]);
+        Helper.ExtractFile(Helper.Paths["dataArchive"], Helper.Paths["temp"]);
+        File.Delete(Helper.Paths["dataArchive"]);
+
+        Directory.Move(Helper.Paths["tempFxserverData"], Helper.Paths["fxserverData"]);
+    }
+}
