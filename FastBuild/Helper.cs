@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using SharpCompress.Archives;
 using SharpCompress.Common;
 using SharpCompress.Readers;
+#pragma warning disable CS8509
 
 namespace FastBuild;
 
