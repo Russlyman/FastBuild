@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net.Http;
@@ -22,6 +23,7 @@ internal static class Helper
         { "server", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar },
         { "fxserverConfig", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "server.cfg" },
         { "fxserverData", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "server-data" + Path.DirectorySeparatorChar },
+        { "resources", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "server-data" + Path.DirectorySeparatorChar + "resources" + Path.DirectorySeparatorChar + "[local]" + Path.DirectorySeparatorChar },
         { "dataArchive", AppDomain.CurrentDomain.BaseDirectory + "temp" + Path.DirectorySeparatorChar + "cfx-server-data-master.zip" },
         { "tempFxserverData", AppDomain.CurrentDomain.BaseDirectory + "temp" + Path.DirectorySeparatorChar + "cfx-server-data-master" + Path.DirectorySeparatorChar },
         { "fxserver", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "fxserver" + Path.DirectorySeparatorChar },
@@ -109,5 +111,20 @@ internal static class Helper
             "y" => true,
             "n" => false
         };
+    }
+
+    // A bit of a hack but Directory.CreateSymbolicLink doesn't work unless the program is ran as admin.
+    internal static async Task CreateSymLink(string location, string target)
+    {
+        var symlink = new ProcessStartInfo
+        {
+            FileName = "cmd.exe",
+            Arguments = $"/C MKLINK /J \"{ location }\" \"{ target }\"",
+            UseShellExecute = false,
+            CreateNoWindow = true
+        };
+
+        using var process = Process.Start(symlink);
+        await process.WaitForExitAsync();
     }
 }

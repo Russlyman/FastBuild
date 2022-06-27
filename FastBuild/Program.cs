@@ -26,7 +26,8 @@ namespace FastBuild
                 Setup,
                 StartServer,
                 UpdateServer,
-                UpdateData
+                UpdateData,
+                Link
             >
                 (args).WithParsedAsync<IOption>(o => o.Run(config));
         }

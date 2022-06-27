@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace FastBuild;
 
-[Verb("setup", HelpText = "Setup FastBuild")]
+[Verb("setup", HelpText = "Setup FastBuild.")]
 public class Setup : IOption
 {
     public async Task Run(IConfigurationRoot config)
@@ -22,5 +22,6 @@ public class Setup : IOption
 
         await new UpdateData().Run(config);
         await new UpdateServer().Run(config);
+        await new SymLink().Run(config);
     }
 }
