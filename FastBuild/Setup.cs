@@ -8,7 +8,7 @@ namespace FastBuild;
 [Verb("setup", HelpText = "Setup FastBuild.")]
 public class Setup : IOption
 {
-    public async Task Run(IConfigurationRoot config)
+    public async Task Execute(IConfigurationRoot config)
     {
         if (Directory.Exists(Helper.Paths["server"]))
         {
@@ -19,8 +19,8 @@ public class Setup : IOption
             Directory.Delete(Helper.Paths["server"], true);
         }
 
-        await new UpdateData().Run(config);
-        await new UpdateServer().Run(config);
-        await new Link().Run(config);
+        await new UpdateData().Execute(config);
+        await new UpdateServer().Execute(config);
+        await new Link().Execute(config);
     }
 }

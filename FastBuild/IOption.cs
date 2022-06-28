@@ -5,5 +5,5 @@ namespace FastBuild;
 
 public interface IOption
 {
-    Task Run(IConfigurationRoot config);
+    Task Execute(IConfigurationRoot config);
 }

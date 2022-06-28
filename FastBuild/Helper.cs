@@ -17,21 +17,21 @@ namespace FastBuild;
 
 internal static class Helper
 {
-    private static readonly string TempPath = AppDomain.CurrentDomain.BaseDirectory + "temp" + Path.DirectorySeparatorChar;
-    private static readonly string ServerPath = AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar;
+    private static readonly string TempPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "temp");
+    private static readonly string ServerPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "server");
 
     public static readonly Dictionary<string, string> Paths = new()
     {
         { "temp", TempPath },
         { "server", ServerPath },
-        { "fxserverConfig", ServerPath + "server.cfg" },
-        { "fxserverData", ServerPath + "server-data" + Path.DirectorySeparatorChar },
-        { "resourcesLocal", ServerPath + "server-data" + Path.DirectorySeparatorChar + "resources" + Path.DirectorySeparatorChar + "[local]" + Path.DirectorySeparatorChar },
-        { "dataArchive", TempPath + "cfx-server-data-master.zip" },
-        { "tempFxserverData", TempPath + "cfx-server-data-master" + Path.DirectorySeparatorChar },
-        { "fxserver", ServerPath + "fxserver" + Path.DirectorySeparatorChar },
-        { "fxserverBinary", ServerPath + "fxserver" + Path.DirectorySeparatorChar + "FXServer.exe" },
-        { "artefactArchive", TempPath + "server.7z" }
+        { "fxserverConfig", Path.Combine(ServerPath, "server.cfg") },
+        { "fxserverData", Path.Combine(ServerPath, "server-data") },
+        { "resourcesLocal", Path.Combine(ServerPath, "server-data", "resources", "[local]") },
+        { "dataArchive", Path.Combine(TempPath, "cfx-server-data-master.zip") },
+        { "tempFxserverData", Path.Combine(TempPath, "cfx-server-data-master") },
+        { "fxserver", Path.Combine(ServerPath, "fxserver") },
+        { "fxserverBinary", Path.Combine(ServerPath, "fxserver", "FXServer.exe") },
+        { "artefactArchive", Path.Combine(TempPath, "server.7z") }
     };
 
     internal static async Task<string> GetLatestArtefactUrl()

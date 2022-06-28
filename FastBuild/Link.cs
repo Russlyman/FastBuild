@@ -8,9 +8,9 @@ namespace FastBuild;
 [Verb("link", HelpText = "Creates a Symbolic Link between the resource and development server.")]
 internal class Link : IOption
 {
-    public async Task Run(IConfigurationRoot config)
+    public async Task Execute(IConfigurationRoot config)
     {
-        var symLinkPath = Helper.Paths["resourcesLocal"] + new DirectoryInfo(config["resourcePath"]).Name + Path.DirectorySeparatorChar;
+        var symLinkPath = Path.Combine(Helper.Paths["resourcesLocal"], new DirectoryInfo(config["resourcePath"]).Name);
 
         if (Directory.Exists(Helper.Paths["resourcesLocal"]))
         {

@@ -8,7 +8,7 @@ namespace FastBuild;
 [Verb("updateserver", HelpText = "Updates FiveM development server.")]
 public class UpdateServer : IOption
 {
-    public async Task Run(IConfigurationRoot config)
+    public async Task Execute(IConfigurationRoot config)
     {
 
         if (Directory.Exists(Helper.Paths["fxserver"]))

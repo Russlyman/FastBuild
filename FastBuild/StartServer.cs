@@ -8,7 +8,7 @@ namespace FastBuild;
 [Verb("start", HelpText = "Starts the development server.")]
 internal class StartServer : IOption
 {
-    public async Task Run(IConfigurationRoot config)
+    public async Task Execute(IConfigurationRoot config)
     {
         var server = new ProcessStartInfo
         {

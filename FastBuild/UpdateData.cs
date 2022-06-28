@@ -8,7 +8,7 @@ namespace FastBuild;
 [Verb("updatedata", HelpText = "Updates FiveM data.")]
 public class UpdateData : IOption
 {
-    public async Task Run(IConfigurationRoot config)
+    public async Task Execute(IConfigurationRoot config)
     {
         if (Directory.Exists(Helper.Paths["fxserverData"]))
         {

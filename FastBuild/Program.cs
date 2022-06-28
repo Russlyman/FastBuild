@@ -25,11 +25,12 @@ namespace FastBuild
             <
                 Setup,
                 StartServer,
+                Run,
                 UpdateServer,
                 UpdateData,
                 Link
             >
-                (args).WithParsedAsync<IOption>(o => o.Run(config));
+                (args).WithParsedAsync<IOption>(o => o.Execute(config));
         }
     }
 }
