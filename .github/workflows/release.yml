@@ -24,7 +24,7 @@ jobs:
     - name: Publish project
       run: dotnet publish FastBuild -c Release -o publish -r win-x64 -p:Version=${{ steps.get_version.outputs.VERSION }} -p:PublishSingleFile=true -p:PublishReadyToRun=true --self-contained
     - name: Create archive
-      run: zip -j FastBuild-${{ steps.get_version.outputs.VERSION }}.zip publish/FastBuild.exe THIRDPARTYLEGALNOTICES
+      run: zip -j FastBuild-${{ steps.get_version.outputs.VERSION }}.zip publish/FastBuild.exe THIRDPARTYLEGALNOTICES publish/config.json publish/fxserver.cfg README.md
     - name: Create release
       uses: marvinpinto/action-automatic-releases@latest
       with:
