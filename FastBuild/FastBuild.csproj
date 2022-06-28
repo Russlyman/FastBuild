@@ -7,6 +7,7 @@
     <Copyright>Copyright (c) 2022 Ross Elliman</Copyright>
     <Company>Ross Elliman (Russlyman)</Company>
     <Version>0.0.0</Version>
+    <Product>FastBuild</Product>
   </PropertyGroup>
 
   <ItemGroup>
