@@ -23,7 +23,7 @@ internal static class Helper
         { "server", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar },
         { "fxserverConfig", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "server.cfg" },
         { "fxserverData", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "server-data" + Path.DirectorySeparatorChar },
-        { "resources", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "server-data" + Path.DirectorySeparatorChar + "resources" + Path.DirectorySeparatorChar + "[local]" + Path.DirectorySeparatorChar },
+        { "resourcesLocal", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "server-data" + Path.DirectorySeparatorChar + "resources" + Path.DirectorySeparatorChar + "[local]" + Path.DirectorySeparatorChar },
         { "dataArchive", AppDomain.CurrentDomain.BaseDirectory + "temp" + Path.DirectorySeparatorChar + "cfx-server-data-master.zip" },
         { "tempFxserverData", AppDomain.CurrentDomain.BaseDirectory + "temp" + Path.DirectorySeparatorChar + "cfx-server-data-master" + Path.DirectorySeparatorChar },
         { "fxserver", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "fxserver" + Path.DirectorySeparatorChar },
