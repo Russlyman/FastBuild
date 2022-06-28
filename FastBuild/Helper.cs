@@ -11,23 +11,27 @@ using Newtonsoft.Json;
 using SharpCompress.Archives;
 using SharpCompress.Common;
 using SharpCompress.Readers;
+#pragma warning disable CS8509
 
 namespace FastBuild;
 
 internal static class Helper
 {
+    private static readonly string TempPath = AppDomain.CurrentDomain.BaseDirectory + "temp" + Path.DirectorySeparatorChar;
+    private static readonly string ServerPath = AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar;
+
     public static readonly Dictionary<string, string> Paths = new()
     {
-        { "temp", AppDomain.CurrentDomain.BaseDirectory + "temp" + Path.DirectorySeparatorChar },
-        { "server", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar },
-        { "fxserverConfig", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "server.cfg" },
-        { "fxserverData", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "server-data" + Path.DirectorySeparatorChar },
-        { "resourcesLocal", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "server-data" + Path.DirectorySeparatorChar + "resources" + Path.DirectorySeparatorChar + "[local]" + Path.DirectorySeparatorChar },
-        { "dataArchive", AppDomain.CurrentDomain.BaseDirectory + "temp" + Path.DirectorySeparatorChar + "cfx-server-data-master.zip" },
-        { "tempFxserverData", AppDomain.CurrentDomain.BaseDirectory + "temp" + Path.DirectorySeparatorChar + "cfx-server-data-master" + Path.DirectorySeparatorChar },
-        { "fxserver", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "fxserver" + Path.DirectorySeparatorChar },
-        { "fxserverBinary", AppDomain.CurrentDomain.BaseDirectory + "server" + Path.DirectorySeparatorChar + "fxserver" + Path.DirectorySeparatorChar + "FXServer.exe" },
-        { "artefactArchive", AppDomain.CurrentDomain.BaseDirectory + "temp" + Path.DirectorySeparatorChar + "server.7z" }
+        { "temp", TempPath },
+        { "server", ServerPath },
+        { "fxserverConfig", ServerPath + "server.cfg" },
+        { "fxserverData", ServerPath + "server-data" + Path.DirectorySeparatorChar },
+        { "resourcesLocal", ServerPath + "server-data" + Path.DirectorySeparatorChar + "resources" + Path.DirectorySeparatorChar + "[local]" + Path.DirectorySeparatorChar },
+        { "dataArchive", TempPath + "cfx-server-data-master.zip" },
+        { "tempFxserverData", TempPath + "cfx-server-data-master" + Path.DirectorySeparatorChar },
+        { "fxserver", ServerPath + "fxserver" + Path.DirectorySeparatorChar },
+        { "fxserverBinary", ServerPath + "fxserver" + Path.DirectorySeparatorChar + "FXServer.exe" },
+        { "artefactArchive", TempPath + "server.7z" }
     };
 
     internal static async Task<string> GetLatestArtefactUrl()
