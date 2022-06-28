@@ -24,9 +24,9 @@ internal static class Helper
     {
         { "temp", TempPath },
         { "server", ServerPath },
-        { "fxserverConfig", Path.Combine(ServerPath, "server.cfg") },
+        { "fxserverConfig", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "fxserver.cfg") },
         { "fxserverData", Path.Combine(ServerPath, "server-data") },
-        { "resourcesLocal", Path.Combine(ServerPath, "server-data", "resources", "[local]") },
+        { "resources", Path.Combine(ServerPath, "server-data", "resources", "[fastbuild]") },
         { "dataArchive", Path.Combine(TempPath, "cfx-server-data-master.zip") },
         { "tempFxserverData", Path.Combine(TempPath, "cfx-server-data-master") },
         { "fxserver", Path.Combine(ServerPath, "fxserver") },

@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace FastBuild;
 
-[Verb("updatedata", HelpText = "Updates FiveM data.")]
+[Verb("updatedata", HelpText = "Update cfx-server-data.")]
 public class UpdateData : IOption
 {
     public async Task Execute(IConfigurationRoot config)

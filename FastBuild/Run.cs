@@ -7,7 +7,7 @@ using Russlyman.Rcon;
 
 namespace FastBuild;
 
-[Verb("run", HelpText = "Runs FastBuild.")]
+[Verb("run", HelpText = "Perform a build.")]
 public class Run : IOption
 {
     [Option('i', "input", Required = true, HelpText = "The path of the new DLL.")]
@@ -19,11 +19,22 @@ public class Run : IOption
 
         File.Copy(Input, Path.Combine(config["resourcePath"], dllName), true);
 
-        var resourceName = new DirectoryInfo(config["resourcePath"]).Name;
+        int rconPort;
+
+        try
+        {
+            rconPort = Convert.ToInt32(config["rconPort"]);
+        }
+        catch (Exception)
+        {
+            Console.WriteLine("Invalid port provided, check config.json.");
+            Environment.Exit(1);
+            return;
+        }
 
         var rcon = new RconClient();
-        rcon.Connect("127.0.0.1", 30130, "fastbuild");
-        await rcon.SendAsync($"restart { resourceName }");
+        rcon.Connect(config["rconIp"], rconPort, config["rconPassword"]);
+        await rcon.SendAsync($"restart { config["resourceName"] }");
         rcon.Close();
     }
 }

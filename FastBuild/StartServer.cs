@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace FastBuild;
 
-[Verb("start", HelpText = "Starts the development server.")]
+[Verb("start", HelpText = "Starts FXServer.")]
 internal class StartServer : IOption
 {
     public async Task Execute(IConfigurationRoot config)
@@ -14,7 +14,7 @@ internal class StartServer : IOption
         {
             WorkingDirectory = Helper.Paths["fxserverData"],
             FileName = Helper.Paths["fxserverBinary"],
-            Arguments = $"+set sv_licenseKey {config["fxserverLicenseKey"]} +exec \"{Helper.Paths["fxserverConfig"]}\""
+            Arguments = $"+set sv_licenseKey {config["fxserverLicenseKey"]} +exec \"{Helper.Paths["fxserverConfig"]}\" +ensure {config["resourceName"]}"
         };
 
         using var process = Process.Start(server);

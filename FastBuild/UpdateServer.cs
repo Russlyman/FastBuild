@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace FastBuild;
 
-[Verb("updateserver", HelpText = "Updates FiveM development server.")]
+[Verb("updateserver", HelpText = "Update FXServer.")]
 public class UpdateServer : IOption
 {
     public async Task Execute(IConfigurationRoot config)
