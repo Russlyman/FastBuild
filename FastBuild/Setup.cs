@@ -22,6 +22,6 @@ public class Setup : IOption
 
         await new UpdateData().Run(config);
         await new UpdateServer().Run(config);
-        await new SymLink().Run(config);
+        await new Link().Run(config);
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace FastBuild;
 
-[Verb("start", HelpText = "Starts the FiveM development server.")]
+[Verb("start", HelpText = "Starts the development server.")]
 internal class StartServer : IOption
 {
     public async Task Run(IConfigurationRoot config)
