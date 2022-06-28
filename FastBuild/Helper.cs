@@ -11,7 +11,6 @@ using Newtonsoft.Json;
 using SharpCompress.Archives;
 using SharpCompress.Common;
 using SharpCompress.Readers;
-#pragma warning disable CS8509
 
 namespace FastBuild;
 
@@ -106,7 +105,7 @@ internal static class Helper
         }
         while (string.IsNullOrWhiteSpace(choice) || choice.ToLower() != "y" && choice.ToLower() != "n");
 
-        return choice switch
+        return choice.ToLower() switch
         {
             "y" => true,
             "n" => false

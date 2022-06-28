@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;  
-using System.Security.Permissions;
+﻿using System.IO;
 using System.Threading.Tasks;
 using CommandLine;
 using Microsoft.Extensions.Configuration;
@@ -13,15 +10,15 @@ internal class Link : IOption
 {
     public async Task Run(IConfigurationRoot config)
     {
-        var symLinkPath = Helper.Paths["resourcesLocal"] + new DirectoryInfo(config["resourceLocation"]).Name + Path.DirectorySeparatorChar;
+        var symLinkPath = Helper.Paths["resourcesLocal"] + new DirectoryInfo(config["resourcePath"]).Name + Path.DirectorySeparatorChar;
 
         if (Directory.Exists(Helper.Paths["resourcesLocal"]))
         {
-            Directory.Delete(Helper.Paths["resourcesLocal"]);
+            Directory.Delete(Helper.Paths["resourcesLocal"], true);
         }
 
-        Directory.CreateDirectory(Helper.Paths["resources"]);
+        Directory.CreateDirectory(Helper.Paths["resourcesLocal"]);
 
-        await Helper.CreateSymLink(symLinkPath, config["resourceLocation"]);
+        await Helper.CreateSymLink(symLinkPath, config["resourcePath"]);
     }
 }
