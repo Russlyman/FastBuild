@@ -1,0 +1,33 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Get Git tag name
+      id: get_version
+      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\/v/}
+      shell: bash
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Publish project
+      run: dotnet publish FastBuild -c Release -o publish -r win-x64 -p:Version=${{ steps.get_version.outputs.VERSION }} -p:PublishSingleFile=true -p:PublishReadyToRun=true --self-contained
+    - name: Create archive
+      run: zip -j FastBuild-${{ steps.get_version.outputs.VERSION }}.zip publish/FastBuild.exe THIRDPARTYLEGALNOTICES
+    - name: Create release
+      uses: marvinpinto/action-automatic-releases@latest
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        prerelease: false
+        files: FastBuild-${{ steps.get_version.outputs.VERSION }}.zip
