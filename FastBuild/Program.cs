@@ -27,7 +27,7 @@ namespace FastBuild
             <
                 Setup,
                 StartServer,
-                Run,
+                Build,
                 UpdateServer,
                 UpdateData,
                 Link

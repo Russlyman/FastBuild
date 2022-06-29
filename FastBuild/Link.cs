@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace FastBuild;
 
-[Verb("link", HelpText = "Creates a Symbolic Link between the resource and server.")]
+[Verb("link", HelpText = "Create a Symbolic Link between the resource and server.")]
 internal class Link : IOption
 {
     public async Task Execute(IConfigurationRoot config)

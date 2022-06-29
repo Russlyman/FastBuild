@@ -7,17 +7,17 @@ using Russlyman.Rcon;
 
 namespace FastBuild;
 
-[Verb("run", HelpText = "Perform a build.")]
-public class Run : IOption
+[Verb("build", HelpText = "Perform a build.")]
+public class Build : IOption
 {
-    [Option('i', "input", Required = true, HelpText = "The path of the new DLL.")]
-    public string Input { get; private set; }
+    [Option('p', "path", Required = true, HelpText = "DLL Path")]
+    public string DllPath { get; private set; }
 
     public async Task Execute(IConfigurationRoot config)
     {
-        var dllName = Path.GetFileName(Input);
+        var dllName = Path.GetFileName(DllPath);
 
-        File.Copy(Input, Path.Combine(config["resourcePath"], dllName), true);
+        File.Copy(DllPath, Path.Combine(config["resourcePath"], dllName), true);
 
         int rconPort;
 
