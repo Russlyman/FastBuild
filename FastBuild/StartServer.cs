@@ -14,7 +14,7 @@ internal class StartServer : IOption
         {
             WorkingDirectory = Helper.Paths["fxserverData"],
             FileName = Helper.Paths["fxserverBinary"],
-            Arguments = $"+set sv_licenseKey {config["fxserverLicenseKey"]} +exec \"{Helper.Paths["fxserverConfig"]}\" +ensure {config["resourceName"]}"
+            Arguments = $"+set sv_licenseKey {config["fxserverLicenseKey"]} +exec \"{ Helper.Paths["fxserverConfig"] }\" +ensure { config["resourceName"] }"
         };
 
         using var process = Process.Start(server);

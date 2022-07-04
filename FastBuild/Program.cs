@@ -11,7 +11,7 @@ namespace FastBuild
         static async Task Main(string[] args)
         {
             var config = new ConfigurationBuilder()
-                .AddJsonFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json"), false, false)
+                .AddJsonFile(Helper.Paths["config"], false, false)
                 .Build();
 
             config["resourceName"] = new DirectoryInfo(config["resourcePath"]).Name;

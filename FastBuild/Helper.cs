@@ -22,6 +22,7 @@ internal static class Helper
 
     public static readonly Dictionary<string, string> Paths = new()
     {
+        { "config", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.json") },
         { "temp", TempPath },
         { "server", ServerPath },
         { "fxserverConfig", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "fxserver.cfg") },
