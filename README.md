@@ -23,7 +23,7 @@ FastBuild is a console application designed to reduce the time between writing c
         - Right Click then `Properties`
         - Navigate to `Build` > `Events` section
             - Set `When to run the post-build event` to `When the build succeeds`
-            - Set `Post-build event` to `"<fastbuild_exepath>" run -i "$(TargetPath)"` but substitute `<fastbuild_exepath>` with the path of the FastBuild EXE file
+            - Set `Post-build event` to `"<fastbuild_exepath>" build -p "$(TargetPath)"` but substitute `<fastbuild_exepath>` with the path of the FastBuild EXE file
 
 ## Command Line Parameters
 ### setup
