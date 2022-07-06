@@ -32,13 +32,13 @@ Setup FastBuild.
 ### start
 Starts the FiveM development server.
 
-### run
-Runs FastBuild.
+### build
+Performs a build.
 
 #### Options
 | Option | Short | Long | Description
 | --- | --- | --- | --- |
-| DLL Path | -i | --ip | The path of the new DLL file that should copied into the resource. |
+| DLL Path | -p | --path | The path of the new DLL file that should copied into the resource. |
 
 ### updateserver
 Updates the FiveM development server.
