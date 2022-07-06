@@ -32,9 +32,8 @@ public class Build : IOption
             return;
         }
 
-        var rcon = new RconClient();
+        using var rcon = new RconClient();
         rcon.Connect(config["rconIp"], rconPort, config["rconPassword"]);
         await rcon.SendAsync($"restart { config["resourceName"] }");
-        rcon.Close();
     }
 }
