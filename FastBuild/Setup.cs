@@ -21,6 +21,6 @@ public class Setup : IOption
 
         await new UpdateData().Execute(config);
         await new UpdateServer().Execute(config);
-        await new Link().Execute(config);
+        await new CreateSymbolicLink().Execute(config);
     }
 }

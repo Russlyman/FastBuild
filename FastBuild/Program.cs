@@ -30,7 +30,7 @@ namespace FastBuild
                 Build,
                 UpdateServer,
                 UpdateData,
-                Link
+                CreateSymbolicLink
             >
                 (args).WithParsedAsync<IOption>(o => o.Execute(config));
         }
