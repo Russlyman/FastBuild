@@ -25,6 +25,12 @@ FastBuild is a console application designed to reduce the time between writing c
             - Set `When to run the post-build event` to `When the build succeeds`
             - Set `Post-build event` to `"<fastbuild_exepath>" build -p "$(TargetPath)"` but substitute `<fastbuild_exepath>` with the path of the FastBuild EXE file
 
+Before developing, ensure the development server is started using the command `fastbuild start`. Now when you build your project in Visual Studio, FastBuild will perform its magic.
+
+If you need to update the development server or the server data folder, you can run commands `fastbuild updateserver` and `fastbuild updatedata`.
+
+If you ever want to develop a different resource and you configured it for use with FastBuild using the above steps, you should update the `resourcePath` in `config.json` and run the command `fastbuild link`.
+
 ## Command Line Parameters
 ### setup
 Setup FastBuild.
@@ -47,7 +53,7 @@ Updates FXServer development server.
 Updates FXServer server data folder.
 
 ### link
-Creates a symbolic link for the resource specified in `config.json`.
+Links the resource specified in `config.json` to FastBuild.
 
 ## Authors
 - [@Russlyman](https://www.github.com/Russlyman)
