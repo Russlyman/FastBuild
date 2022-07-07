@@ -1,15 +1,29 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using CommandLine;
 using Microsoft.Extensions.Configuration;
 
 namespace FastBuild;
 
-[Verb("start", HelpText = "Start FXServer.")]
-internal class StartServer : IOption
+[Verb("start", HelpText = "Starts FXServer development server.")]
+public class StartServer : IOption
 {
     public async Task Execute(IConfigurationRoot config)
     {
+        if (!Directory.Exists(Helper.Paths["fxserverData"]) || !Directory.Exists(Helper.Paths["fxserver"]))
+        {
+            Console.WriteLine("ERROR: Development server not setup, run setup command.");
+            Environment.Exit(1);
+        }
+
+        if (!Directory.Exists(Path.Combine(Helper.Paths["resources"], config["resourceName"])))
+        {
+            Console.WriteLine("ERROR: Symbolic link not found, run link command.");
+            Environment.Exit(1);
+        }
+
         var server = new ProcessStartInfo
         {
             WorkingDirectory = Helper.Paths["fxserverData"],

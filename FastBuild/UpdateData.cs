@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace FastBuild;
 
-[Verb("updatedata", HelpText = "Update cfx-server-data.")]
+[Verb("updatedata", HelpText = "Updates FXServer server data folder.")]
 public class UpdateData : IOption
 {
     public async Task Execute(IConfigurationRoot config)
@@ -25,5 +25,7 @@ public class UpdateData : IOption
         File.Delete(Helper.Paths["dataArchive"]);
 
         Directory.Move(Helper.Paths["tempFxserverData"], Helper.Paths["fxserverData"]);
+
+        await new CreateSymbolicLink().Execute(config);
     }
 }

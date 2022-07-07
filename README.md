@@ -4,7 +4,7 @@
 FastBuild is a console application designed to reduce the time between writing changes to C# based FiveM resource and testing them.
 
 ## Features
-- In-built FiveM development server
+- In-built FXServer development server
 - Symbolic linking between FiveM C# resource and development server
 - Automatic resource restarts
 - Updates resource with DLL files
@@ -30,7 +30,7 @@ FastBuild is a console application designed to reduce the time between writing c
 Setup FastBuild.
 
 ### start
-Starts the FiveM development server.
+Starts FXServer development server.
 
 ### build
 Performs a build.
@@ -41,13 +41,13 @@ Performs a build.
 | DLL Path | -p | --path | The path of the new DLL file that should copied into the resource. |
 
 ### updateserver
-Updates the FiveM development server.
+Updates FXServer development server.
 
 ### updatedata
-Updates the cfx-server-data folder.
+Updates FXServer server data folder.
 
 ### link
-Creates a symbolic link in the development server for the resource specified in `config.json`.
+Creates a symbolic link for the resource specified in `config.json`.
 
 ## Authors
 - [@Russlyman](https://www.github.com/Russlyman)

@@ -15,7 +15,7 @@ using SharpCompress.Readers;
 
 namespace FastBuild;
 
-internal static class Helper
+public static class Helper
 {
     private static readonly string TempPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "temp");
     private static readonly string ServerPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "server");
@@ -35,20 +35,24 @@ internal static class Helper
         { "artefactArchive", Path.Combine(TempPath, "server.7z") }
     };
 
-    internal static async Task<string> GetLatestArtefactUrl()
+    public static async Task<string> GetLatestArtefactUrl()
     {
+        // Setup HttpClient
         using var httpClient = new HttpClient();
         var userAgent = new ProductInfoHeaderValue("FastBuild", "Russlyman");
         httpClient.DefaultRequestHeaders.UserAgent.Add(userAgent);
 
+        // Make request, convert to JSON.
         var request = await httpClient.GetAsync("https://api.github.com/repos/citizenfx/fivem/tags");
-
         var tagsString = await request.Content.ReadAsStringAsync();
         var tagsJson = JsonConvert.DeserializeObject<dynamic>(tagsString);
 
+        // Regex to identify release tags.
         var regex = new Regex(@"v\d.\d.\d.\d\d\d\d");
+
         string identifier = "";
 
+        // Iterate through tags, find first tag that matches regex (aka latest release), generate identifier for artefact URL.
         foreach (var tag in tagsJson)
         {
             string tagName = tag.name;
@@ -62,18 +66,18 @@ internal static class Helper
         return "https://runtime.fivem.net/artifacts/fivem/build_server_windows/master/" + identifier + "/server.7z";
     }
 
-    internal static async Task DownloadFile(string url, string target)
+    public static async Task DownloadFile(string url, string target)
     {
         using var httpClient = new HttpClient();
-        var fileBytes = await httpClient.GetByteArrayAsync(url);
 
+        var fileBytes = await httpClient.GetByteArrayAsync(url);
         await File.WriteAllBytesAsync(target, fileBytes);
     }
 
     // I think this error happens because the FiveM artefact file is fat, idk though.
     // It ain't a problem if you can't see the warning =)
     [SuppressMessage("ReSharper.DPA", "DPA0002: Excessive memory allocations in SOH", MessageId = "type: System.Byte[]")]
-    internal static void ExtractFile(string source, string target)
+    public static void ExtractFile(string source, string target)
     {
         if (!Directory.Exists(target))
         {
@@ -97,7 +101,7 @@ internal static class Helper
         }
     }
 
-    internal static bool Choice(string message)
+    public static bool Choice(string message)
     {
         Console.WriteLine(message);
 
@@ -118,7 +122,7 @@ internal static class Helper
     }
 
     // A bit of a hack but Directory.CreateSymbolicLink doesn't work unless the program is ran as admin.
-    internal static async Task CreateSymLink(string location, string target)
+    public static async Task CreateSymLink(string location, string target)
     {
         var symlink = new ProcessStartInfo
         {
