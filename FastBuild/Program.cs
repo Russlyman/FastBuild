@@ -55,7 +55,7 @@ internal class Program
 
         await Parser.Default.ParseArguments
             <
-                Setup,
+                SetupServer,
                 StartServer,
                 Build,
                 UpdateServer,

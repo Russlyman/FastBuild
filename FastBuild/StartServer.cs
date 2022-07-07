@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace FastBuild;
 
-[Verb("start", HelpText = "Starts FXServer development server.")]
+[Verb("startserver", HelpText = "Starts FXServer development server.")]
 public class StartServer : IOption
 {
     public async Task Execute(IConfigurationRoot config)

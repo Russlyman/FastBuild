@@ -4,8 +4,8 @@ using Microsoft.Extensions.Configuration;
 
 namespace FastBuild;
 
-[Verb("setup", HelpText = "Setup FastBuild.")]
-public class Setup : IOption
+[Verb("setupserver", HelpText = "Setup FXServer.")]
+public class SetupServer : IOption
 {
     public async Task Execute(IConfigurationRoot config)
     {

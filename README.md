@@ -17,7 +17,7 @@ FastBuild is a console application designed to reduce the time between writing c
     - Set `fxserverLicenseKey` to your FiveM server license key from [Cfx.re Keymaster](https://keymaster.fivem.net)
     - You can optionally update the `rcon*` settings but ensure they match `endpoint_add_*` and `rcon_password` in `fxserver.cfg`
 - Open Command Prompt and navigate to the folder FastBuild was extracted to
-- Execute command `fastbuild setup`
+- Execute command `fastbuild setupserver`
 - Open the Visual Studio solution for your FiveM resource
     - For every project in Solution Explorer that is a FiveM script do
         - Right Click then `Properties`
@@ -25,17 +25,17 @@ FastBuild is a console application designed to reduce the time between writing c
             - Set `When to run the post-build event` to `When the build succeeds`
             - Set `Post-build event` to `"<fastbuild_exepath>" build -p "$(TargetPath)"` but substitute `<fastbuild_exepath>` with the path of the FastBuild EXE file
 
-Before developing, ensure the development server is started using the command `fastbuild start`. Now when you build your project in Visual Studio, FastBuild will perform its magic.
+Before developing, ensure the development server is started using the command `fastbuild startserver`. Now when you build your project in Visual Studio, FastBuild will perform its magic.
 
 If you need to update the development server or the server data folder, you can run commands `fastbuild updateserver` and `fastbuild updatedata`.
 
 If you ever want to develop a different resource and you configured it for use with FastBuild using the above steps, you should update the `resourcePath` in `config.json` and run the command `fastbuild link`.
 
 ## Command Line Parameters
-### setup
-Setup FastBuild.
+### setupserver
+Setup FXServer.
 
-### start
+### startserver
 Starts FXServer development server.
 
 ### build
