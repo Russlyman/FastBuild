@@ -26,6 +26,6 @@ public class UpdateData : IOption
 
         Directory.Move(Helper.Paths["tempFxserverData"], Helper.Paths["fxserverData"]);
 
-        await new CreateSymbolicLink().Execute(config);
+        await new Link().Execute(config);
     }
 }

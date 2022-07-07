@@ -60,7 +60,7 @@ internal class Program
                 Build,
                 UpdateServer,
                 UpdateData,
-                CreateSymbolicLink
+                Link
             >
             (args).WithParsedAsync<IOption>(o => o.Execute(config));
     }
