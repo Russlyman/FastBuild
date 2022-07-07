@@ -18,6 +18,12 @@ public class StartServer : IOption
             Environment.Exit(1);
         }
 
+        if (!File.Exists(Helper.Paths["fxserverConfig"]))
+        {
+            Console.WriteLine("ERROR: fxserver.cfg could not be found.");
+            Environment.Exit(1);
+        }
+
         if (!Directory.Exists(Path.Combine(Helper.Paths["resources"], config["resourceName"])))
         {
             Console.WriteLine("ERROR: Symbolic link not found, run link command.");

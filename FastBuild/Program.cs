@@ -16,12 +16,6 @@ internal class Program
             Environment.Exit(1);
         }
 
-        if (!File.Exists(Helper.Paths["fxserverConfig"]))
-        {
-            Console.WriteLine("ERROR: fxserver.cfg could not be found.");
-            Environment.Exit(1);
-        }
-
         var config = new ConfigurationBuilder()
             .AddJsonFile(Helper.Paths["config"], false, false)
             .Build();
