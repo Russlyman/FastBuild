@@ -26,12 +26,6 @@ internal class Program
             Environment.Exit(1);
         }
 
-        if (string.IsNullOrWhiteSpace(config["fxserverLicenseKey"]))
-        {
-            Console.WriteLine("ERROR: FXServer license key not set, check config.json.");
-            Environment.Exit(1);
-        }
-
         if (!Directory.Exists(config["resourcePath"]))
         {
             Console.WriteLine("ERROR: Resource path not valid.");

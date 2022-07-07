@@ -24,6 +24,12 @@ public class StartServer : IOption
             Environment.Exit(1);
         }
 
+        if (string.IsNullOrWhiteSpace(config["fxserverLicenseKey"]))
+        {
+            Console.WriteLine("ERROR: FXServer license key not set, check config.json.");
+            Environment.Exit(1);
+        }
+
         if (!Directory.Exists(Path.Combine(Helper.Paths["resources"], config["resourceName"])))
         {
             Console.WriteLine("ERROR: Symbolic link not found, run link command.");
