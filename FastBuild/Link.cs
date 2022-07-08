@@ -22,6 +22,7 @@ public class Link : IOption
         // Delete FastBuild resources folder to destroy existing links.
         if (Directory.Exists(Helper.Paths["resources"]))
         {
+            Helper.DeleteAllSymLinks(Helper.Paths["resources"]);
             Directory.Delete(Helper.Paths["resources"], true);
         }
 

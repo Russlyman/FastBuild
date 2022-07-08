@@ -135,4 +135,16 @@ public static class Helper
         using var process = Process.Start(symlink);
         await process.WaitForExitAsync();
     }
+
+    // This method exists because Directory.Delete recursive mode breaks when it tries to delete symbolic links.
+    public static void DeleteAllSymLinks(string path)
+    {
+        foreach (var entry in Directory.GetDirectories(path, "*.*", SearchOption.AllDirectories))
+        {
+            if (Directory.ResolveLinkTarget(entry, false) != null)
+            {
+                Directory.Delete(entry);
+            }
+        }
+    }
 }

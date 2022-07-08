@@ -12,6 +12,7 @@ public class UpdateData : IOption
     {
         if (Directory.Exists(Helper.Paths["fxserverData"]))
         {
+            Helper.DeleteAllSymLinks(Helper.Paths["fxserverData"]);
             Directory.Delete(Helper.Paths["fxserverData"], true);
         }
 
