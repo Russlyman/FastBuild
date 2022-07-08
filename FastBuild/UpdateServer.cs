@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using CommandLine;
 using Microsoft.Extensions.Configuration;
@@ -18,8 +19,12 @@ public class UpdateServer : IOption
 
         var latestArtefactUrl = await Helper.GetLatestArtefactUrl();
 
+        Console.WriteLine("STATUS: Downloading FXServer.");
         await Helper.DownloadFile(latestArtefactUrl, Helper.Paths["artefactArchive"]);
+
+        Console.WriteLine("STATUS: Extracting FXServer.");
         Helper.ExtractFile(Helper.Paths["artefactArchive"], Helper.Paths["fxserver"]);
+
         File.Delete(Helper.Paths["artefactArchive"]);
     }
 }

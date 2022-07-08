@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using CommandLine;
 using Microsoft.Extensions.Configuration;
@@ -21,8 +22,12 @@ public class UpdateData : IOption
             Directory.CreateDirectory(Helper.Paths["server"]);
         }
 
+        Console.WriteLine("STATUS: Downloading server data.");
         await Helper.DownloadFile("https://github.com/citizenfx/cfx-server-data/archive/refs/heads/master.zip", Helper.Paths["dataArchive"]);
+        
+        Console.WriteLine("STATUS: Extracting server data.");
         Helper.ExtractFile(Helper.Paths["dataArchive"], Helper.Paths["temp"]);
+        
         File.Delete(Helper.Paths["dataArchive"]);
 
         Directory.Move(Helper.Paths["tempFxserverData"], Helper.Paths["fxserverData"]);
