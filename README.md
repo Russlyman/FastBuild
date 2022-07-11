@@ -23,9 +23,9 @@ FastBuild is a console application designed to reduce the time between writing c
         - Right Click then `Properties`
         - Navigate to `Build` > `Events` section
             - Set `When to run the post-build event` to `When the build succeeds`
-            - Set `Post-build event` to `"<fastbuild_exepath>" build -p "$(TargetPath)"` but substitute `<fastbuild_exepath>` with the path of the FastBuild EXE file
+            - Set `Post-build event` to `if $(ConfigurationName) == Debug "<fastbuild_exepath>" build -p "$(TargetPath)"` but substitute `<fastbuild_exepath>` with the path of the FastBuild EXE file
 
-Before developing, ensure the development server is started using the command `fastbuild startserver`. Now when you build your project in Visual Studio, FastBuild will perform its magic.
+Before developing, ensure the development server is started using the command `fastbuild startserver`. Now when you build your project in Visual Studio using the Debug configuration, FastBuild will perform its magic.
 
 If you need to update the development server or the server data folder, you can run commands `fastbuild updateserver` and `fastbuild updatedata`.
 
